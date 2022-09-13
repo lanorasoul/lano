@@ -1,0 +1,132 @@
+{
+
+      'event': 'checkout',
+
+      'ecommerce': {
+
+        'checkout': {
+
+          'actionField': {'step': 1, 'option': 'Select Coupon'},
+
+          'products': [{
+
+            'name': this.product.title
+
+         }]
+
+       }
+
+     }
+
+
+ 
+
+{
+
+        'event': 'checkout',
+
+        'ecommerce': {
+
+          'checkout': {
+
+            'actionField': { 'step': 2, 'option': 'Collect Customer Info' },
+
+            'products': [{
+
+              'name': this.product.title,
+
+              'id': this.product.coupons[0].couponNumber,
+
+              'price': this.totalAmount,
+
+              'brand': this.company.title,
+
+              'category': this.product.externalProductId,
+
+              'quantity': this.quantity,
+
+              'coupon': this.product.coupons[0].couponNumber
+
+            }]
+
+          }
+
+
+ 
+
+{
+
+        'event': 'checkout',
+
+        'ecommerce': {
+
+          'checkout': {
+
+            'actionField': { 'step': 3, 'option': 'Receipt' },
+
+            'products': [{
+
+              'name': this.product.title,
+
+              'id': this.order.orderLines[0].productSpecNo,
+
+              'price': this.order.orderLines[0].unitPrice,
+
+              'brand': companyName,
+
+              'category': this.product.externalProductId,
+
+              'quantity': this.order.orderLines[0].quantity,
+
+              'coupon': this.order.orderLines[0].productSpecNo
+
+            }]
+
+          }
+
+        }
+
+      }
+
+
+Köp:
+
+{
+
+        'event': 'purchase',
+
+        'ecommerce': {
+
+          'purchase': {
+
+            'actionField': {
+
+              'id': orderId,
+
+              'affiliation': 'order.flowy.se',
+
+              'revenue': this.order.orderAmount,
+
+            },
+
+            'products': [{
+
+              'name': this.product.title,
+
+              'id': this.order.orderLines[0].productSpecNo,
+
+              'price': this.order.orderLines[0].unitPrice,
+
+              'brand': companyName,
+
+              'category': this.product.externalProductId,
+
+              'quantity': this.order.orderLines[0].quantity,
+
+              'coupon': this.order.orderLines[0].productSpecNo
+
+            }]
+
+          }
+
+        }
